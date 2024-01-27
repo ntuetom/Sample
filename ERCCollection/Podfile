@@ -1,0 +1,17 @@
+
+use_frameworks! :linkage => :static
+
+platform :ios, '10.0'
+
+target 'ERCCollection' do
+	pod 'SnapKit'
+	pod 'MJRefresh'
+	pod 'Moya'
+	pod 'Alamofire'
+	pod 'RxCocoa'
+	pod 'RxSwift'
+	pod 'RxDataSources'
+	pod 'Kingfisher'
+	pod 'SVGKit'
+end
+
