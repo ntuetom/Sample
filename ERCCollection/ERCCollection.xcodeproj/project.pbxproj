@@ -30,6 +30,7 @@
 		5171CC0E25F586DD00E090CD /* GetAssetsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5171CC0D25F586DD00E090CD /* GetAssetsModel.swift */; };
 		5171CC1125F58D7500E090CD /* Assetable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5171CC1025F58D7500E090CD /* Assetable.swift */; };
 		5171CC3025F65BF200E090CD /* APIQuery+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5171CC2F25F65BF200E090CD /* APIQuery+Ext.swift */; };
+		51EC32472B67F1D200E6DC0F /* UIImageView+SVG+AVIF.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51EC32462B67F1D200E6DC0F /* UIImageView+SVG+AVIF.swift */; };
 		51F270072B64CC73000AE84E /* GetBalanceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F270062B64CC73000AE84E /* GetBalanceModel.swift */; };
 		9642F9C8D1AACEEF780E79F7 /* Pods_ERCCollection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FA102B5B896CC62F49263C2 /* Pods_ERCCollection.framework */; };
 /* End PBXBuildFile section */
@@ -60,6 +61,7 @@
 		5171CC0D25F586DD00E090CD /* GetAssetsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetAssetsModel.swift; sourceTree = "<group>"; };
 		5171CC1025F58D7500E090CD /* Assetable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assetable.swift; sourceTree = "<group>"; };
 		5171CC2F25F65BF200E090CD /* APIQuery+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "APIQuery+Ext.swift"; sourceTree = "<group>"; };
+		51EC32462B67F1D200E6DC0F /* UIImageView+SVG+AVIF.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+SVG+AVIF.swift"; sourceTree = "<group>"; };
 		51F270062B64CC73000AE84E /* GetBalanceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetBalanceModel.swift; sourceTree = "<group>"; };
 		8FA102B5B896CC62F49263C2 /* Pods_ERCCollection.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ERCCollection.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		913E12B106A9DFF0082BF3AA /* Pods-ERCCollection.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ERCCollection.debug.xcconfig"; path = "Target Support Files/Pods-ERCCollection/Pods-ERCCollection.debug.xcconfig"; sourceTree = "<group>"; };
@@ -283,6 +285,7 @@
 			isa = PBXGroup;
 			children = (
 				5171CC2F25F65BF200E090CD /* APIQuery+Ext.swift */,
+				51EC32462B67F1D200E6DC0F /* UIImageView+SVG+AVIF.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -447,6 +450,7 @@
 				185E5CE325F70A1C00D0A9AC /* DetailView.swift in Sources */,
 				5171CBF125F57C5300E090CD /* Network.swift in Sources */,
 				5171CBB225F5753500E090CD /* AppDelegate.swift in Sources */,
+				51EC32472B67F1D200E6DC0F /* UIImageView+SVG+AVIF.swift in Sources */,
 				51F270072B64CC73000AE84E /* GetBalanceModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

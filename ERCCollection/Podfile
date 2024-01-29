@@ -7,11 +7,16 @@ target 'ERCCollection' do
 	pod 'SnapKit'
 	pod 'MJRefresh'
 	pod 'Moya'
-	pod 'Alamofire'
+	pod 'Alamofire', '4.9.1'
 	pod 'RxCocoa'
 	pod 'RxSwift'
 	pod 'RxDataSources'
 	pod 'Kingfisher'
 	pod 'SVGKit'
+	pod 'SDWebImageAVIFCoder'
+	pod 'libavif', :subspecs => [
+	  'libdav1d',
+	  'librav1e'
+	]
 end
 

@@ -1,5 +1,8 @@
 # demo-portto
 
+## Before run project...
+`pod install first`
+
 ## Feature:
 - MVVM
 - API request
@@ -7,7 +10,7 @@
 - collectionView navigationBar
 - dynamic height of tableView and height of cell with url image
 - open url
-- svg image
+- svg/avif image
 - JSON-RPC
 
 ## Dependency:

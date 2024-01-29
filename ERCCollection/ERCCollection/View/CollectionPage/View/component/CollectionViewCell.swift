@@ -34,14 +34,7 @@ class CollectionViewCell: UICollectionViewCell {
     
     func setup(data: CollectionData) {
         nameLabel.text = data.name
-        guard let url = data.image_preview_url else {
-            return
-        }
-        var options: KingfisherOptionsInfo?
-        if url.relativeString.hasSuffix(".svg") {
-            options = [.processor(SVGImgProcessor())]
-        }
-        imageView.kf.setImage(with: data.image_preview_url, options: options)
+        imageView.setExtensionImage(data.image_preview_url)
     }
     
     func setupView() {

@@ -45,17 +45,9 @@ class TableViewCell: UITableViewCell {
         setupConstraint()
         nameLabel.text = data.name
         descLabel.text = data.desc
-        guard let url = data.imageURL else {
-            return
-        }
-        var options: KingfisherOptionsInfo?
-        if url.relativeString.hasSuffix(".svg") {
-            options = [.processor(SVGImgProcessor())]
-        }
-        collectionImageView.kf.setImage(with: url, options: options, completionHandler: { [unowned self] response in
-            switch response {
-            case .success(let img):
-                let ratio = img.image.size.height/img.image.size.width
+        collectionImageView.setExtensionImage(data.imageURL) { [unowned self] img, error in
+            if let image = img {
+                let ratio = image.size.height/image.size.width
                 self.collectionImageView.snp.remakeConstraints { make in
                     make.top.leading.trailing.equalToSuperview()
                     make.height.equalTo(self.collectionImageView.snp.width).multipliedBy(ratio)
@@ -65,10 +57,10 @@ class TableViewCell: UITableViewCell {
                 let descHeight = descLabel.intrinsicContentSize.height
                 let totalHeigt = descHeight + nameHeight + 2*kOffset
                 delegate.updateCellHeight(forExceptionImage: totalHeigt, ratio: ratio)
-            case .failure(let error):
-                print("TableViewCell LoadImage Error: \(error.localizedDescription)")
+            } else {
+                print(error)
             }
-        })
+        }
     }
     
     private func makeLabel() -> UILabel {
