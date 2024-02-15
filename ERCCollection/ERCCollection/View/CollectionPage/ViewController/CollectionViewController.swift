@@ -13,9 +13,18 @@ import RxDataSources
 
 class CollectionViewController: BaseViewController {
 
-    let viewModel = CollectionViewModel()
+    let viewModel: CollectionViewModel
     weak var collectionView: UICollectionView!
     weak var refreshFooter: MJRefreshAutoNormalFooter!
+    
+    init(_ vm: CollectionViewModel) {
+        viewModel = vm
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func loadView() {
         super.loadView()
@@ -43,13 +52,16 @@ class CollectionViewController: BaseViewController {
     func binding() {
         collectionView.rx.setDelegate(self).disposed(by: disposeBag)
         
-        Observable.zip(collectionView.rx.itemSelected,
-                       collectionView.rx.modelSelected(CollectionData.self))
-                    .bind{ [unowned self] indexPath, model in
-                        let detailVC = DetailViewControlller(data: model)
-                        navigationController?.pushViewController(detailVC, animated: true)
-                    }
-                    .disposed(by: disposeBag)
+        collectionView.rx.modelSelected(CollectionData.self).bind(to: viewModel.didClickCell).disposed(by: disposeBag)
+//        Observable.zip(collectionView.rx.itemSelected,
+//                       collectionView.rx.modelSelected(CollectionData.self))
+//            .bind
+//        { [unowned self] indexPath, model in
+//
+//            let detailVC = DetailViewControlller(data: model)
+//            navigationController?.pushViewController(detailVC, animated: true)
+//        }
+//        .disposed(by: disposeBag)
         
         viewModel.cellSource.subscribe { [weak self] _ in
             self?.refreshFooter?.endRefreshing()

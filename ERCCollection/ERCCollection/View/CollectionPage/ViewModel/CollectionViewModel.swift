@@ -15,6 +15,7 @@ class CollectionViewModel: NSObject, Assetable {
     var offset = 0
     var limit = 20
     var cellSource = PublishSubject<[CustomSectionDataType]>()
+    var didClickCell = PublishSubject<CollectionData>()
     var collectionDatas: [CollectionData] = []
     var pageKey: String?
     var totalCount: Int

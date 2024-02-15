@@ -10,7 +10,9 @@ import RxSwift
 class DetailViewModel: NSObject {
     
     let collectionData: CollectionData
+    let didTapWebButton = PublishSubject<URL>()
     var cellSource = PublishSubject<[TableViewCellData]>()
+    
     var cellData: TableViewCellData {
         TableViewCellData(name: collectionData.name, desc: collectionData.description, imageURL: collectionData.img_url)
     }

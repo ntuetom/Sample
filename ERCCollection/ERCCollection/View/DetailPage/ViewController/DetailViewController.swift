@@ -14,8 +14,8 @@ class DetailViewControlller: BaseViewController {
     var detailView: DetailView!
     weak var tableView: UITableView!
     
-    init(data: CollectionData) {
-        viewModel = DetailViewModel(data: data)
+    init(_ vm: DetailViewModel) {
+        viewModel = vm
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -53,14 +53,10 @@ class DetailViewControlller: BaseViewController {
                 cell.setup(data:  element, delegate: self)
             }
             .disposed(by: disposeBag)
+        
         detailView.webButton.rx.tap.subscribe { [weak self] _ in
             if let url = self?.viewModel.collectionData.webURL {
-                if #available(iOS 10, *) {
-                    UIApplication.shared.open(url, options: [:], completionHandler: nil)
-                } else {
-                    UIApplication.shared.openURL(url)
-                }
-                
+                self?.viewModel.didTapWebButton.onNext(url)
             }
         }.disposed(by: disposeBag)
     }
