@@ -1,10 +1,10 @@
-# demo-portto
+# Pratace
 
 ## Before run project...
 `pod install first`
 
 ## Feature:
-- MVVM
+- MVVM-C
 - API request
 - pull up update data
 - collectionView navigationBar
