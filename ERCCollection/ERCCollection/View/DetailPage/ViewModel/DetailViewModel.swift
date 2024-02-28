@@ -10,6 +10,7 @@ import RxSwift
 class DetailViewModel: NSObject {
     
     let collectionData: CollectionData
+    let didPopBack = PublishSubject<Void>()
     let didTapWebButton = PublishSubject<URL>()
     var cellSource = PublishSubject<[TableViewCellData]>()
     

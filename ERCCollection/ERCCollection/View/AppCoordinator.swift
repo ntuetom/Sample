@@ -12,7 +12,6 @@ class AppCoordinator: BaseCoordinator {
 
     override func start() {
         let coordinator = CollectionViewCoordinator()
-        coordinator.navigationController = navigationController
         start(coordinator: coordinator)
         
         if #available(iOS 14.0, *) {

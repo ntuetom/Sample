@@ -2,6 +2,8 @@
 .DS_Store
 build
 report.xml
+*.xcbkptlist
+*.xcuserstate
 *.pbxuser
 !default.pbxuser
 *.mode1v3

@@ -1,4 +1,4 @@
-# Pratace
+# Practice
 
 ## Before run project...
 `pod install first`

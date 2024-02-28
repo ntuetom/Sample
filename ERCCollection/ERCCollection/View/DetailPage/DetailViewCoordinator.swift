@@ -25,6 +25,10 @@ class DetailViewCoordinator: BaseCoordinator {
                 UIApplication.shared.openURL(url)
             }
         }).disposed(by: disposeBag)
+        viewModel.didPopBack.subscribe(onNext: {[weak self] in
+            guard let self = self else {return}
+            self.parentCoordinator?.didFinish(coordinator: self)
+        }).disposed(by: disposeBag)
         navigationController.pushViewController(detailViewcontroller, animated: true)
     }
 }

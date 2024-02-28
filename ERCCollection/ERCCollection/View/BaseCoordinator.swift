@@ -30,6 +30,7 @@ class BaseCoordinator: Coordinator {
     
     func start(coordinator: Coordinator) {
         childCoordinators.append(coordinator)
+        coordinator.navigationController = navigationController
         coordinator.parentCoordinator = self
         coordinator.start()
     }

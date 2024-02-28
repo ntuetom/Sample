@@ -34,8 +34,7 @@ class DetailViewControlller: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationController?.setNavigationBarHidden(false, animated: false)
-        navigationItem.titleView = detailView.navTitleLabel
+        setupView()
         binding()
         viewModel.emitData()
     }
@@ -45,7 +44,13 @@ class DetailViewControlller: BaseViewController {
         disposeBag = DisposeBag()
     }
     
+    func setupView() {
+        navigationController?.setNavigationBarHidden(false, animated: false)
+        navigationItem.titleView = detailView.navTitleLabel
+    }
+    
     func binding() {
+        navigationController?.delegate = self
         viewModel
             .cellSource
             .asDriver(onErrorJustReturn: [])
@@ -61,12 +66,25 @@ class DetailViewControlller: BaseViewController {
         }.disposed(by: disposeBag)
     }
 }
-extension DetailViewControlller: TableViewCellDelegate {
+extension DetailViewControlller: TableViewCellDelegate, UINavigationControllerDelegate {
     
     func updateCellHeight(forExceptionImage height: CGFloat, ratio: CGFloat){
         if tableView.frame.height != height {
             self.tableView.reloadItemsAtIndexPaths([IndexPath(row: 0, section: 0)], animationStyle: .automatic)
             self.detailView.updateTableViewConstraint(for: height+tableView.frame.width*ratio)
+        }
+    }
+    
+    func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
+        if viewController !== self {
+            viewModel.didPopBack.onNext(())
+        }
+        if let coordinator = navigationController.topViewController?.transitionCoordinator {
+            coordinator.notifyWhenInteractionChanges { [weak self] (context) in
+                if !context.isCancelled {
+                    self?.viewModel.didPopBack.onNext(())
+                }
+            }
         }
     }
 }
