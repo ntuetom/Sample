@@ -76,14 +76,16 @@ extension DetailViewControlller: TableViewCellDelegate, UINavigationControllerDe
     }
     
     func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
-        if viewController !== self {
-            viewModel.didPopBack.onNext(())
-        }
         if let coordinator = navigationController.topViewController?.transitionCoordinator {
-            coordinator.notifyWhenInteractionChanges { [weak self] (context) in
-                if !context.isCancelled {
-                    self?.viewModel.didPopBack.onNext(())
+            if coordinator.isInteractive {
+                coordinator.notifyWhenInteractionChanges { [weak self] (context) in
+                    if !context.isCancelled {
+                        self?.viewModel.didPopBack.onNext(())
+                    }
                 }
+                
+            } else if viewController !== self {
+                viewModel.didPopBack.onNext(())
             }
         }
     }
