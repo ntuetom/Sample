@@ -72,15 +72,15 @@ public class RxRequest: NSObject {
                             single(.success(.success(tempObj)))
                         } catch (let error) {
                             let _error = ParseResponseError.respnseError(errCode: "", errMsg: error.localizedDescription)
-                            single(.error(_error))
+                            single(.failure(_error))
                         }
                     } else {
                         let _error = ParseResponseError.others
-                        single(.error(_error))
+                        single(.failure(_error))
                     }
                 case let .failure(error):
                     let _error = ParseResponseError.respnseError(errCode: "", errMsg: error.localizedDescription)
-                    single(.error(_error))
+                    single(.failure(_error))
                 }
             }
             return Disposables.create()

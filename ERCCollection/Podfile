@@ -8,7 +8,6 @@ target 'ERCCollection' do
 	pod 'MJRefresh'
 	pod 'Moya'
 	pod 'Alamofire', '4.9.1'
-	pod 'RxCocoa'
 	pod 'RxSwift'
 	pod 'RxDataSources'
 	pod 'Kingfisher'
